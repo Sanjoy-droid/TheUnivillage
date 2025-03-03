@@ -6,7 +6,7 @@ import {
   SignedIn,
   SignedOut,
   UserButton,
-} from '@clerk/nextjs'
+} from "@clerk/nextjs";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -37,7 +37,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -46,12 +48,8 @@ export default function RootLayout({
           >
             <header className="flex justify-end items-center p-4 gap-4 h-16">
               <Navbar />
-
             </header>
-            <main>
-              {children}
-            </main>
-
+            <main>{children}</main>
           </ThemeProvider>
         </body>
       </html>

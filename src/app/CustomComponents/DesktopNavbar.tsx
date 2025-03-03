@@ -8,9 +8,7 @@ import { Badge } from "@/components/ui/badge";
 
 import { currentUser } from "@clerk/nextjs/server";
 
-
 async function DesktopNavbar() {
-
   const user = await currentUser();
   return (
     <div className="hidden md:flex w-full items-center">
@@ -22,7 +20,9 @@ async function DesktopNavbar() {
       {/* Center Section */}
       <div className="flex justify-center flex-1">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold text-primary font-mono tracking-wider">The Univillage </span>
+          <span className="text-xl font-bold text-primary font-mono tracking-wider">
+            The Univillage{" "}
+          </span>
         </Link>
       </div>
 
@@ -40,7 +40,12 @@ async function DesktopNavbar() {
         {user ? (
           <>
             <div className="relative">
-              <Button variant="ghost" size="icon" className="rounded-full" asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full"
+                asChild
+              >
                 <Link href="/notifications">
                   <BellIcon className="h-5 w-5" />
                   <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs">
@@ -51,7 +56,12 @@ async function DesktopNavbar() {
               </Button>
             </div>
 
-            <Button variant="ghost" size="icon" className="rounded-full" asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-full"
+              asChild
+            >
               <Link href="/search">
                 <SearchIcon className="h-5 w-5" />
                 <span className="sr-only">Search</span>
@@ -59,10 +69,17 @@ async function DesktopNavbar() {
             </Button>
 
             <div className="relative ml-1">
-              <Button variant="ghost" size="icon" className="rounded-full" asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full"
+                asChild
+              >
                 <Link
-                  href={`/profile/${user.username ?? user.emailAddresses[0].emailAddress.split("@")[0]
-                    }`}
+                  href={`/profile/${
+                    user.username ??
+                    user.emailAddresses[0].emailAddress.split("@")[0]
+                  }`}
                 >
                   <UserIcon className="h-5 w-5" />
                   <span className="sr-only">Profile</span>
@@ -75,8 +92,8 @@ async function DesktopNavbar() {
                 afterSignOutUrl="/"
                 appearance={{
                   elements: {
-                    userButtonAvatarBox: "h-8 w-8"
-                  }
+                    userButtonAvatarBox: "h-8 w-8",
+                  },
                 }}
               />
             </div>
