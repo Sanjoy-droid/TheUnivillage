@@ -1,23 +1,18 @@
 import type { Metadata } from "next";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import localFont from "next/font/local";
 import "./globals.css";
-
 import { ThemeProvider } from "next-themes";
 import Navbar from "./CustomComponents/Navbar";
+import Sidebar from "./CustomComponents/Sidebar";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -46,10 +41,25 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <header className="flex justify-end items-center p-4 gap-4 h-16">
+            <div className="min-h-screen">
               <Navbar />
-            </header>
-            <main>{children}</main>
+              <main className="py-8">
+                {/* container to center the content */}
+                <div className="max-w-7xl mx-auto px-4">
+                  <div className="grid grid-cols-12 gap-6">
+                    {/* Responsive sidebar - adjusts width based on screen size */}
+                    <div className="col-span-12 md:col-span-4 lg:col-span-3">
+                      <Sidebar />
+                    </div>
+                    {/* Main content - adjusts width based on screen size */}
+                    <div className="col-span-12 md:col-span-8 lg:col-span-9">
+                      {children}
+                    </div>
+                  </div>
+                </div>
+              </main>
+            </div>
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>
