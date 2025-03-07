@@ -3,9 +3,14 @@ import Image from "next/image";
 import PeopleToFollow from "./CustomComponents/PeopleToFollow";
 import { currentUser } from "@clerk/nextjs/server";
 import CreatePost from "./CustomComponents/CreatePost";
+import PostCard from "./CustomComponents/PostCard";
+import { getPosts } from "@/actions/post.action";
+import { getDbUserId } from "@/actions/user.action";
 
 export default async function Home() {
   const user = await currentUser();
+  const posts = await getPosts();
+  const dbUserId = await getDbUserId();
 
   return (
     <>
@@ -14,10 +19,10 @@ export default async function Home() {
         <div className="md:col-span-7 lg:col-span-7 xl:col-span-7 order-2 md:order-2">
           {user ? <CreatePost /> : null}
           <div className="space-y-6">
-            {/* Post cards would go here */}
-            {/* {posts.map((post) => ( */}
-            {/*   <PostCard key={post.id} post={post} dbUserId={dbUserId} /> */}
-            {/* ))} */}
+            {/* Post cards Section */}
+            {posts.map((post) => (
+              <PostCard key={post.id} post={post} dbUserId={dbUserId} />
+            ))}
           </div>
         </div>
 
