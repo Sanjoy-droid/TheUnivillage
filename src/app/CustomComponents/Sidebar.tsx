@@ -1,17 +1,3 @@
-// import { currentUser } from "@clerk/nextjs/server";
-// import React from "react";
-// import GuestSidebar from "./GuestSidebar";
-// import UserSidebar from "./UserSidebar";
-//
-// const Sidebar = () => {
-//   const authUser = currentUser();
-//   if (!authUser) return <GuestSidebar />;
-//   return <UserSidebar />;
-// };
-//
-// export default Sidebar;
-//
-//
 import { currentUser } from "@clerk/nextjs/server";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SignInButton, SignUpButton } from "@clerk/nextjs";

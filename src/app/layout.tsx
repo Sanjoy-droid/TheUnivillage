@@ -46,13 +46,15 @@ export default function RootLayout({
               <main className="py-8">
                 {/* container to center the content */}
                 <div className="max-w-7xl mx-auto px-4">
-                  <div className="grid grid-cols-12 gap-6">
-                    {/* Responsive sidebar - adjusts width based on screen size */}
-                    <div className="col-span-12 md:col-span-4 lg:col-span-3">
-                      <Sidebar />
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+                    {/* Responsive sidebar - always shown but with different widths */}
+                    <div className="md:col-span-3 lg:col-span-2 xl:col-span-2">
+                      <div className="sticky top-20">
+                        <Sidebar />
+                      </div>
                     </div>
-                    {/* Main content - adjusts width based on screen size */}
-                    <div className="col-span-12 md:col-span-8 lg:col-span-9">
+                    {/* Main content area - takes more space on larger screens */}
+                    <div className="md:col-span-9 lg:col-span-10 xl:col-span-10">
                       {children}
                     </div>
                   </div>
