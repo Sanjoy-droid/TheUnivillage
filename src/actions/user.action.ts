@@ -64,6 +64,32 @@ export async function getDbUserId() {
   return user.id;
 }
 
+export async function getRandomUsersForGuests() {
+  try {
+    const randomUsers = await prisma.user.findMany({
+      select: {
+        id: true,
+        name: true,
+        username: true,
+        image: true,
+        _count: {
+          select: {
+            followers: true,
+          },
+        },
+      },
+      take: 3,
+      orderBy: {
+        // Add random ordering to get different users each time
+        createdAt: "desc", // Or any other ordering you prefer
+      },
+    });
+    return randomUsers;
+  } catch (error) {
+    console.log("Error fetching random users", error);
+    return [];
+  }
+}
 export async function getRandomUsers() {
   try {
     const userId = await getDbUserId();
