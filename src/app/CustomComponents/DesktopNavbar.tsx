@@ -48,26 +48,26 @@ async function DesktopNavbar() {
               >
                 <Link href="/notifications">
                   <BellIcon className="h-5 w-5" />
-                  <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs">
-                    3
-                  </Badge>
+                  {/* <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs"> */}
+                  {/*   3 */}
+                  {/* </Badge> */}
                   <span className="sr-only">Notifications</span>
                 </Link>
               </Button>
             </div>
 
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full"
-              asChild
-            >
-              <Link href="/search">
-                <SearchIcon className="h-5 w-5" />
-                <span className="sr-only">Search</span>
-              </Link>
-            </Button>
-
+            {/* <Button */}
+            {/*   variant="ghost" */}
+            {/*   size="icon" */}
+            {/*   className="rounded-full" */}
+            {/*   asChild */}
+            {/* > */}
+            {/*   <Link href="/search"> */}
+            {/*     <SearchIcon className="h-5 w-5" /> */}
+            {/*     <span className="sr-only">Search</span> */}
+            {/*   </Link> */}
+            {/* </Button> */}
+            {/**/}
             <div className="relative ml-1">
               <Button
                 variant="ghost"
