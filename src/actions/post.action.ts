@@ -4,12 +4,10 @@ import { prisma } from "@/lib/prisma";
 import { getDbUserId } from "./user.action";
 import { revalidatePath } from "next/cache";
 
-export async function createPost(content: string, image: string) {
+export const createPost = async (content: string, image: string) => {
   try {
     const userId = await getDbUserId();
-
     if (!userId) return;
-
     const post = await prisma.post.create({
       data: {
         content,
@@ -17,14 +15,13 @@ export async function createPost(content: string, image: string) {
         authorId: userId,
       },
     });
-
-    revalidatePath("/"); // purge the cache for the home page
+    revalidatePath("/");
     return { success: true, post };
   } catch (error) {
     console.error("Failed to create post:", error);
     return { success: false, error: "Failed to create post" };
   }
-}
+};
 
 export async function getPosts() {
   try {

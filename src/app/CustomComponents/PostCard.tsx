@@ -100,13 +100,16 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
                 <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2 truncate">
                   <Link
                     href={`/profile/${post.author.username}`}
-                    className="font-semibold truncate"
+                    className="font-semibold "
                   >
                     {post.author.name}
                   </Link>
                   <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                     <Link href={`/profile/${post.author.username}`}>
-                      @{post.author.username}
+                      {/* @{post.author.username} */}@
+                      {(post.author.username.length ?? 0) > 2
+                        ? `${post.author.username.slice(0, 3)}...`
+                        : (post.author.username ?? "")}
                     </Link>
                     <span>•</span>
                     <span>
