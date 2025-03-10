@@ -4,6 +4,7 @@ import CreatePost from "./CustomComponents/CreatePost";
 import PostCard from "./CustomComponents/PostCard";
 import { getPosts } from "@/actions/post.action";
 import { getDbUserId } from "@/actions/user.action";
+import Footer from "./CustomComponents/Footer";
 
 export default async function Home() {
   const user = await currentUser();
@@ -24,7 +25,6 @@ export default async function Home() {
             ))}
           </div>
         </div>
-
         {/* People to follow - Always visible */}
         <div className="md:col-span-5 lg:col-span-5 xl:col-span-5 order-3 md:order-3">
           <div className="sticky top-20">
